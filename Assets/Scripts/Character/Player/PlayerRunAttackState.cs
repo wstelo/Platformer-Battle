@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerRunAttackState : State
 {
-    private AnimatorController _animator;
+    private PlayerAnimatorController _animator;
     private GroundChecker _groundChecker;
     private float _valueToMoveY = 0;
     private float _moveSpeed;
     private Weapon _weapon;
     private Mover _mover;
 
-    public PlayerRunAttackState(StateMachine stateMachine, AnimatorController animator, Mover mover, GroundChecker groundChecker, float moveSpeed, Weapon weapon) : base(stateMachine)
+    public PlayerRunAttackState(StateMachine stateMachine, PlayerAnimatorController animator, Mover mover, GroundChecker groundChecker, float moveSpeed, Weapon weapon) : base(stateMachine)
     {
         _animator = animator;
         _mover = mover;

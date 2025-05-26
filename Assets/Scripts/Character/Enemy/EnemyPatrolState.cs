@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyPatrolState : State
 {
     private PointCollector _patrolPointsCollector;
-    private AnimatorController _animator;
+    private EnemyAnimatorController _animator;
     private EnemyAreaViewer _areaViewer;
     private Transform _currentTarget;
     private Mover _mover;
@@ -13,7 +13,7 @@ public class EnemyPatrolState : State
     private float _moveSpeed;
     private Vector3 _direction;
 
-    public EnemyPatrolState(StateMachine stateMachine, PointCollector patrolPoints, AnimatorController animator, Mover mover, float moveSpeed, EnemyAreaViewer areaViewer) : base(stateMachine)
+    public EnemyPatrolState(StateMachine stateMachine, PointCollector patrolPoints, EnemyAnimatorController animator, Mover mover, float moveSpeed, EnemyAreaViewer areaViewer) : base(stateMachine)
     {
         _patrolPointsCollector = patrolPoints;
         _areaViewer = areaViewer;

@@ -3,7 +3,7 @@ using UnityEngine.SocialPlatforms;
 
 public class EnemyChasingState : State
 {
-    private AnimatorController _animator;
+    private EnemyAnimatorController _animator;
     private EnemyAreaViewer _areaViewer;
     private Collider2D _currentTarget;
     private Mover _mover;
@@ -12,7 +12,7 @@ public class EnemyChasingState : State
     private float _moveSpeed;
     private Vector3 _direction;
 
-    public EnemyChasingState(StateMachine stateMachine, AnimatorController animator , EnemyAreaViewer enemyViewer, Mover mover, float moveSpeed) : base(stateMachine)
+    public EnemyChasingState(StateMachine stateMachine, EnemyAnimatorController animator , EnemyAreaViewer enemyViewer, Mover mover, float moveSpeed) : base(stateMachine)
     {
         _areaViewer = enemyViewer;
         _moveSpeed = moveSpeed;

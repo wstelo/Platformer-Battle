@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6853214970386085365}
   - component: {fileID: 4873929829626480772}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,10 +100,10 @@ GameObject:
   - component: {fileID: -3466078671943740223}
   - component: {fileID: 6903824694230042910}
   - component: {fileID: 5185659830177019635}
-  - component: {fileID: 8291340164677733655}
   - component: {fileID: 6541871975144089718}
   - component: {fileID: 5079031751751142378}
-  m_Layer: 0
+  - component: {fileID: 924316863172192028}
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,18 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487aa9a074cc13446810b9251feb2503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8291340164677733655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2290733791605258703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c01f5777c8fed0749b1358332ea5126b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6541871975144089718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0446278b686c9d46a8d3d9693559fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _maxValue: 100
 --- !u!114 &5079031751751142378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +334,18 @@ MonoBehaviour:
   _distance: 4
   _circleRadius: 4
   _offsetForStartPoint: 1
+--- !u!114 &924316863172192028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2290733791605258703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1826b1b47d49e6644abf63bf17369692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5881819668727284892
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 2648271574955224407}
   - component: {fileID: 3431313401024391021}
   - component: {fileID: 4501839137921279262}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}

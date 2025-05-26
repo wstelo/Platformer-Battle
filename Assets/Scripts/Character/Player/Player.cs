@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent (typeof(Rigidbody2D), typeof(AnimatorController), typeof(Mover))]
+[RequireComponent (typeof(Rigidbody2D), typeof(PlayerAnimatorController), typeof(Mover))]
 [RequireComponent(typeof(Health), typeof(Rotator), typeof(CollisionDetector))]
 [RequireComponent(typeof (CoinWallet))]
 
@@ -13,7 +13,7 @@ public class Player : Character
     [SerializeField] private float _moveSpeed;
     [SerializeField] private Weapon _weapon;
 
-    private AnimatorController _animatorController;
+    private PlayerAnimatorController _animatorController;
     private StateMachine _stateMachine;
     private Rigidbody2D _rigidbody;
     private Health _health;
@@ -21,7 +21,7 @@ public class Player : Character
 
     private void Awake()
     {
-        _animatorController = GetComponent<AnimatorController>();
+        _animatorController = GetComponent<PlayerAnimatorController>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _mover = GetComponent<Mover>();
         _health = GetComponent<Health>();

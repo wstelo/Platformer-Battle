@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerJumpState : State
 {
-    private AnimatorController _animator;
+    private PlayerAnimatorController _animator;
     private GroundChecker _groundChecker;
     private float _jumpForceHorizontal;
     private InputService _inputService;
@@ -10,7 +10,7 @@ public class PlayerJumpState : State
     private Rigidbody2D _rigidBody;
     private Mover _mover;
 
-    public PlayerJumpState(StateMachine stateMachine, AnimatorController animator, Rigidbody2D rigidBody, float jumpForceVertical, float jumpForceHorizontal, Mover mover, GroundChecker groundChecker, InputService inputService) : base(stateMachine)
+    public PlayerJumpState(StateMachine stateMachine, PlayerAnimatorController animator, Rigidbody2D rigidBody, float jumpForceVertical, float jumpForceHorizontal, Mover mover, GroundChecker groundChecker, InputService inputService) : base(stateMachine)
     {
         _animator = animator;
         _rigidBody = rigidBody;

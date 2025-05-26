@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerIdleAttackState : State
 {
-    private AnimatorController _animator;
+    private PlayerAnimatorController _animator;
     private Weapon _weapon;
     private Mover _mover;
 
-    public PlayerIdleAttackState(StateMachine stateMachine, AnimatorController animator, Mover mover, Weapon weapon) : base(stateMachine)
+    public PlayerIdleAttackState(StateMachine stateMachine, PlayerAnimatorController animator, Mover mover, Weapon weapon) : base(stateMachine)
     {
         _animator = animator;
         _mover = mover;

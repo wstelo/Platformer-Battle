@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PlayerIdleState : State
 {
-    private AnimatorController _animator;
+    private PlayerAnimatorController _animator;
     private GroundChecker _groundChecker;
     private InputService _inputService;
     private Mover _mover;
 
-    public PlayerIdleState(StateMachine stateMachine, AnimatorController animator, Mover mover, GroundChecker groundChecker, InputService inputService) : base(stateMachine)
+    public PlayerIdleState(StateMachine stateMachine, PlayerAnimatorController animator, Mover mover, GroundChecker groundChecker, InputService inputService) : base(stateMachine)
     {
         _animator = animator;
         _mover = mover;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyCheckAreaState : State
 {
-    private AnimatorController _animator;
+    private EnemyAnimatorController _animator;
     private EnemyAreaViewer _areaViewer;
     private Rotator _rotator;
     private float _remainingTimeToNextState;
@@ -10,7 +10,7 @@ public class EnemyCheckAreaState : State
     private float _timeToRotate = 0.5f;
     private float _timeToIdle;
 
-    public EnemyCheckAreaState(StateMachine stateMachine, AnimatorController animator, float timeToIdle, Rotator rotator, EnemyAreaViewer enemyTargetCollector) : base(stateMachine)
+    public EnemyCheckAreaState(StateMachine stateMachine, EnemyAnimatorController animator, float timeToIdle, Rotator rotator, EnemyAreaViewer enemyTargetCollector) : base(stateMachine)
     {
         _animator = animator;
         _timeToIdle = timeToIdle;

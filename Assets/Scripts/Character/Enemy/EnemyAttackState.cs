@@ -1,9 +1,9 @@
 public class EnemyAttackState : State
 {
-    private AnimatorController _animator;
+    private EnemyAnimatorController _animator;
     private Weapon _weapon;
 
-    public EnemyAttackState(StateMachine stateMachine, AnimatorController animator, Weapon weapon) : base(stateMachine)
+    public EnemyAttackState(StateMachine stateMachine, EnemyAnimatorController animator, Weapon weapon) : base(stateMachine)
     {
         _animator = animator;
         _weapon = weapon;

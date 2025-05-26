@@ -6,6 +6,8 @@ public class Rotator : MonoBehaviour
     private Quaternion leftRotation = Quaternion.Euler(0, 180, 0);
     private Quaternion rightRotation = Quaternion.identity;
 
+    public bool IsRight { get; private set; } = true;
+
     private void Awake()
     {
         _mover = GetComponent<Mover>();
@@ -17,10 +19,12 @@ public class Rotator : MonoBehaviour
 
         if (horizontalDirection > 0)
         {
+            IsRight = true;
             transform.rotation = rightRotation;
         }
         else if (horizontalDirection < 0)
         {
+            IsRight = false;
             transform.rotation = leftRotation;
         }
     }
@@ -31,10 +35,12 @@ public class Rotator : MonoBehaviour
 
         if(transform.rotation.y == 0)
         {
+            IsRight = false;
             transform.rotation = leftRotation;
         }
         else
         {
+            IsRight = true;
             transform.rotation = rightRotation;
         }
     }

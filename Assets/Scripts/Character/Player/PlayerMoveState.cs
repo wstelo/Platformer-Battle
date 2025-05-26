@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class PlayerMoveState : State
 {
-    private AnimatorController _animator;
+    private PlayerAnimatorController _animator;
     private GroundChecker _groundChecker;
     private InputService _inputService;
     private float _valueToMoveY = 0;
     private float _moveSpeed;
     private Mover _mover;
 
-    public PlayerMoveState(StateMachine stateMachine, AnimatorController animator, float moveSpeed, Mover mover, GroundChecker groundChecker, InputService inputService) : base(stateMachine)
+    public PlayerMoveState(StateMachine stateMachine, PlayerAnimatorController animator, float moveSpeed, Mover mover, GroundChecker groundChecker, InputService inputService) : base(stateMachine)
     {
         _animator = animator;
         _moveSpeed = moveSpeed;

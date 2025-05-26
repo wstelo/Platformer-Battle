@@ -1,7 +1,9 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAreaViewer : MonoBehaviour
 {
+    
     [SerializeField] private LayerMask _playerLayer;
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private float _distance;
@@ -12,15 +14,23 @@ public class EnemyAreaViewer : MonoBehaviour
     private Vector3 _startPointToRay;
     private Collider2D hit = null;
     private Collider2D _currentTarget = null;
+    private Rotator _rotator;
+    private float _checkDelay = 0.25f;
+    private Coroutine _coroutine = null;
 
     public Collider2D CurrentTarget { get { return _currentTarget; } }
+
+    private void Awake()
+    {
+        _rotator = GetComponent<Rotator>();
+    }
 
     private void Update()
     {
         _circlePosition = transform.position;
         _startPointToRay = transform.position;
 
-        if (transform.rotation == Quaternion.identity)
+        if (_rotator.IsRight)
         {
             _circlePosition.x += _distance;
             _startPointToRay.x += _offsetForStartPoint;
@@ -29,26 +39,41 @@ public class EnemyAreaViewer : MonoBehaviour
         {
             _circlePosition.x -= _distance;
             _startPointToRay.x -= _offsetForStartPoint;
+        }    
+        
+        if(_coroutine == null)
+        {
+            _coroutine = StartCoroutine(CheckAreaAfterTime());
         }
+    }
 
-        Collider2D hit = Physics2D.OverlapCircle(_circlePosition, _circleRadius, _playerLayer);
+    public IEnumerator CheckAreaAfterTime()
+    {
+        var wait = new WaitForSeconds(_checkDelay);
 
-        if(hit != null)
-        {           
-            RaycastHit2D Ray = Physics2D.Raycast(_startPointToRay, hit.transform.position - _startPointToRay,Mathf.Infinity, _playerLayer | _groundLayer);
+        while (enabled)
+        {
+            Collider2D hit = Physics2D.OverlapCircle(_circlePosition, _circleRadius, _playerLayer);
 
-            if(((1 << Ray.collider.gameObject.layer) & _playerLayer.value) != 0)
+            if (hit != null)
             {
-                _currentTarget = Ray.collider;
+                RaycastHit2D Ray = Physics2D.Raycast(_startPointToRay, hit.transform.position - _startPointToRay, Mathf.Infinity, _playerLayer | _groundLayer);
+
+                if (((1 << Ray.collider.gameObject.layer) & _playerLayer.value) != 0)
+                {
+                    _currentTarget = Ray.collider;
+                }
+                else
+                {
+                    _currentTarget = null;
+                }
             }
             else
             {
                 _currentTarget = null;
             }
-        }
-        else
-        {
-            _currentTarget = null;
+
+            yield return wait;
         }
     }
 

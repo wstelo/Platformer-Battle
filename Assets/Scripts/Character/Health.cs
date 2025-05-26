@@ -3,38 +3,42 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float _maxHealth = 100;
+    [SerializeField] private float _maxValue = 100;
+
+    private float _minValue = 0;
 
     public event Action <Health> HealthEnded;
 
-    public float CurrentHealth { get; private set; }
+    public float CurrentValue { get; private set; }
 
     public void Awake()
     {
-        CurrentHealth = _maxHealth;
+        CurrentValue = _maxValue;
     }
 
-    public void IncreaseHealth(float healthCount)
-    {
-        CurrentHealth += healthCount;
-
-        if(CurrentHealth > _maxHealth)
+    public void IncreaseHealth(float count)
+    {   
+        if(count > 0)
         {
-            CurrentHealth = _maxHealth;
-        }
+            CurrentValue += count;
+            CurrentValue = Mathf.Clamp(CurrentValue, _minValue, _maxValue);
 
-        Debug.Log($"Востановлено {healthCount} здоровья. Всего {CurrentHealth} здоровья");
+            Debug.Log($"Востановлено {count} здоровья. Всего {CurrentValue} здоровья");
+        }
     }
 
     public void TakeDamage(float damage)
     {
-        CurrentHealth -= damage;
-        Debug.Log($"Получил {damage} урона. Осталось {CurrentHealth} здоровья.");
-
-        if(CurrentHealth <= 0)
+        if (damage > 0)
         {
-            CurrentHealth = 0;
-            HealthEnded?.Invoke(this);
+            CurrentValue -= damage;
+            Debug.Log($"Получил {damage} урона. Осталось {CurrentValue} здоровья.");
+
+            if (CurrentValue <= 0)
+            {
+                CurrentValue = 0;
+                HealthEnded?.Invoke(this);
+            }
         }
     }
 }

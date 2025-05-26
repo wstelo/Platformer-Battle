@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Mover), typeof(AnimatorController))]
+[RequireComponent(typeof(Mover), typeof(EnemyAnimatorController))]
 [RequireComponent (typeof(Rotator), typeof(Health), typeof(EnemyAreaViewer))]
 
 public class Enemy : Character
@@ -11,7 +11,7 @@ public class Enemy : Character
     [SerializeField] private Weapon _weapon;
 
     private PointCollector _patrolPointsCollector;
-    private AnimatorController _animator;
+    private EnemyAnimatorController _animator;
     private EnemyAreaViewer _areaViewer;
     private StateMachine _stateMachine;
     private Rotator _rotator;
@@ -19,7 +19,7 @@ public class Enemy : Character
 
     private void Awake()
     {
-        _animator = GetComponent<AnimatorController>();
+        _animator = GetComponent<EnemyAnimatorController>();
         _areaViewer = GetComponent<EnemyAreaViewer>();
         _stateMachine = new StateMachine();
         _rotator = GetComponent<Rotator>();
